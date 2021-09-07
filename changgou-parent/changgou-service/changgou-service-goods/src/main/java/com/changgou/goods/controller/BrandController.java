@@ -13,6 +13,8 @@ import java.util.List;
 /**
  * 跨域: A域名访问B域名的数据
  * 域名或者请求端口或协议不一致的时候，就算跨域
+ * <p>
+ * desc : 品牌 管理
  */
 @RestController
 @RequestMapping(value = "/brand")

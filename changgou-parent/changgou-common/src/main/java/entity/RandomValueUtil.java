@@ -23,7 +23,6 @@ public class RandomValueUtil {
      * <p>随机生成Email
      *
      * @author henzhang
-     * @date 2018年5月23日  下午2:13:06
      * @version v1.0
      * @since
      * @param lMin
@@ -51,7 +50,6 @@ public class RandomValueUtil {
      * <p>随机生成手机号码
      *
      * @author henzhang
-     * @date 2018年5月23日  下午2:14:17
      * @version v1.0
      * @since
      * @return
@@ -70,7 +68,6 @@ public class RandomValueUtil {
      * <p>随机生成8位电话号码
      *
      * @author henzhang
-     * @date 2018年5月23日  下午2:15:31
      * @version v1.0
      * @since
      * @return
@@ -96,7 +93,6 @@ public class RandomValueUtil {
      * <p>返回中文姓名
      *
      * @author henzhang
-     * @date 2018年5月23日  下午2:16:16
      * @version v1.0
      * @since
      * @return

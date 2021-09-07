@@ -7,7 +7,6 @@ import org.csource.fastdfs.*;
 import org.springframework.core.io.ClassPathResource;
 
 import java.io.ByteArrayInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -50,13 +49,14 @@ public class FastDFSUtils {
 
     /**
      * 上传文件
+     *
      * @return
      */
     public static String[] upload(FastDFSFile fastDFSFile) throws Exception {
         // 附加参数
         NameValuePair[] meta_list = new NameValuePair[2];
-        meta_list[1] = new NameValuePair("拍摄地址","上海");
-        meta_list[0] = new NameValuePair("author",fastDFSFile.getAuthor());
+        meta_list[1] = new NameValuePair("拍摄地址", "上海");
+        meta_list[0] = new NameValuePair("author", fastDFSFile.getAuthor());
 
         /**
          * 通过 storage client 访问 storage , 实现文件上传 , 并且获取文件上传后的存储信息
@@ -67,15 +67,16 @@ public class FastDFSUtils {
          * 1. uploads[0] :　storage group name       group1
          * 2.　uploads[１] :　storage file name      M00/02/44/XXX.jpg
          */
-        String[] uploads = storageClient.upload_file(fastDFSFile.getContent(),fastDFSFile.getExt(),meta_list);
+        String[] uploads = storageClient.upload_file(fastDFSFile.getContent(), fastDFSFile.getExt(), meta_list);
         return uploads;
     }
 
 
     /**
      * 获取文件
-     * @param groupName
-     * @param remoteFileName
+     *
+     * @param groupName      文件组名    group1
+     * @param remoteFileName 文件存储路径名字    M00/00/00/wKjThF0DBzaAP23MAAXz2mMp9oM26.jpg
      * @return
      * @throws IOException
      */
@@ -86,6 +87,7 @@ public class FastDFSUtils {
 
     /**
      * 下载文件
+     *
      * @param groupName
      * @param remoteFileName
      * @return
@@ -98,19 +100,19 @@ public class FastDFSUtils {
 
     /**
      * 删除文件
+     *
      * @param groupName
      * @param remoteFileName
      * @throws Exception
      */
     public static void deleteFile(String groupName, String remoteFileName) throws Exception {
-        storageClient.delete_file(groupName,remoteFileName);
+        storageClient.delete_file(groupName, remoteFileName);
     }
-
-
 
 
     /**
      * 获取 storage 信息
+     *
      * @return
      * @throws Exception
      */
@@ -121,6 +123,7 @@ public class FastDFSUtils {
 
     /**
      * 获取 tracker 的 ip 和 端口 信息
+     *
      * @return String
      * @throws Exception
      */
@@ -129,21 +132,21 @@ public class FastDFSUtils {
         String ip = trackerServer.getInetSocketAddress().getHostString();
         int tracker_http_port = ClientGlobal.getG_tracker_http_port(); // 8080
         String url = "http://" + ip + ":" + tracker_http_port;
-        return url ;
+        return url;
     }
 
 
     /**
      * 获取 storage 的 ip 和 端口 信息
+     *
      * @param groupName
      * @param remoteFileName
      * @return
      * @throws Exception
      */
     public static ServerInfo[] getServerInfo(String groupName, String remoteFileName) throws Exception {
-        return trackerClient.getFetchStorages(trackerServer,groupName,remoteFileName);
+        return trackerClient.getFetchStorages(trackerServer, groupName, remoteFileName);
     }
-
 
 
     public static void main(String[] args) throws Exception {
@@ -164,8 +167,9 @@ public class FastDFSUtils {
         //os.flush();
         //os.close();
         //is.close();
-    }
 
+
+    }
 
 
 }
