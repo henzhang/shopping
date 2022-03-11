@@ -10,13 +10,16 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-/**
- * @author henzhang
- */
+/****
+ * @Author:henzhang
+ * @Description:
+ *****/
+
 @RestController
 @RequestMapping("/category")
 @CrossOrigin
 public class CategoryController {
+
     @Autowired
     private CategoryService categoryService;
 
@@ -29,7 +32,7 @@ public class CategoryController {
      */
     @PostMapping(value = "/search/{page}/{size}")
     public Result<PageInfo> findPage(@RequestBody(required = false) Category category, @PathVariable int page, @PathVariable int size) {
-        //执行搜索
+        //调用CategoryService实现分页条件查询Category
         PageInfo<Category> pageInfo = categoryService.findPage(category, page, size);
         return new Result(true, StatusCode.OK, "查询成功", pageInfo);
     }
@@ -42,7 +45,7 @@ public class CategoryController {
      */
     @GetMapping(value = "/search/{page}/{size}")
     public Result<PageInfo> findPage(@PathVariable int page, @PathVariable int size) {
-        //分页查询
+        //调用CategoryService实现分页查询Category
         PageInfo<Category> pageInfo = categoryService.findPage(page, size);
         return new Result<PageInfo>(true, StatusCode.OK, "查询成功", pageInfo);
     }
@@ -54,6 +57,7 @@ public class CategoryController {
      */
     @PostMapping(value = "/search")
     public Result<List<Category>> findList(@RequestBody(required = false) Category category) {
+        //调用CategoryService实现条件查询Category
         List<Category> list = categoryService.findList(category);
         return new Result<List<Category>>(true, StatusCode.OK, "查询成功", list);
     }
@@ -65,6 +69,7 @@ public class CategoryController {
      */
     @DeleteMapping(value = "/{id}")
     public Result delete(@PathVariable Integer id) {
+        //调用CategoryService实现根据主键删除
         categoryService.delete(id);
         return new Result(true, StatusCode.OK, "删除成功");
     }
@@ -79,7 +84,7 @@ public class CategoryController {
     public Result update(@RequestBody Category category, @PathVariable Integer id) {
         //设置主键值
         category.setId(id);
-        //修改数据
+        //调用CategoryService实现修改Category
         categoryService.update(category);
         return new Result(true, StatusCode.OK, "修改成功");
     }
@@ -91,6 +96,7 @@ public class CategoryController {
      */
     @PostMapping
     public Result add(@RequestBody Category category) {
+        //调用CategoryService实现添加Category
         categoryService.add(category);
         return new Result(true, StatusCode.OK, "添加成功");
     }
@@ -102,7 +108,7 @@ public class CategoryController {
      */
     @GetMapping("/{id}")
     public Result<Category> findById(@PathVariable Integer id) {
-        //根据ID查询
+        //调用CategoryService实现根据主键查询Category
         Category category = categoryService.findById(id);
         return new Result<Category>(true, StatusCode.OK, "查询成功", category);
     }
@@ -112,18 +118,19 @@ public class CategoryController {
      * @return
      */
     @GetMapping
-    public Result<Category> findAll() {
+    public Result<List<Category>> findAll() {
+        //调用CategoryService实现查询所有Category
         List<Category> list = categoryService.findAll();
-        return new Result<Category>(true, StatusCode.OK, "查询成功", list);
+        return new Result<List<Category>>(true, StatusCode.OK, "查询成功", list);
     }
 
-    /**
-     * 根据父ID查询
+    /****
+     * 根据节点ID查询所有子节点分类集合
      */
-    @RequestMapping(value = "/list/{pid}")
-    public Result<Category> findByPrantId(@PathVariable(value = "pid") Integer pid) {
-        //根据父节点ID查询
-        List<Category> list = categoryService.findByParentId(pid);
-        return new Result<Category>(true, StatusCode.OK, "查询成功", list);
+    @GetMapping(value = "/list/{pid}")
+    public Result<List<Category>> findByParentId(@PathVariable(value = "pid") Integer pid) {
+        //调用Service实现查询
+        List<Category> categories = categoryService.findByParentId(pid);
+        return new Result<List<Category>>(true, StatusCode.OK, "查询成功！", categories);
     }
 }

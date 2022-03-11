@@ -9,7 +9,7 @@ import java.io.Serializable;
 import ${set};
 </#list>
 /****
- * @Author:shenkunlin
+ * @Author:henzhang
  * @Description:${Table}构建
  *****/
 <#if swagger==true>

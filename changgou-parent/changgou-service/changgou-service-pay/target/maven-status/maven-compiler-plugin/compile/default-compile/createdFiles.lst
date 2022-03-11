@@ -1,0 +1,5 @@
+com/changgou/pay/WeiXinPayApplication.class
+com/changgou/pay/mq/MQConfig.class
+com/changgou/pay/service/impl/WeiXinPayServiceImpl.class
+com/changgou/pay/controller/WeiXinPayController.class
+com/changgou/pay/service/WeiXinPayService.class

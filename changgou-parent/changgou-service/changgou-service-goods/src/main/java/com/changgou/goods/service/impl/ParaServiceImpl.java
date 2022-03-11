@@ -1,9 +1,9 @@
 package com.changgou.goods.service.impl;
 
+import com.changgou.goods.dao.CategoryMapper;
 import com.changgou.goods.dao.ParaMapper;
-import com.changgou.goods.dao.TemplateMapper;
+import com.changgou.goods.pojo.Category;
 import com.changgou.goods.pojo.Para;
-import com.changgou.goods.pojo.Template;
 import com.changgou.goods.service.ParaService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -14,25 +14,42 @@ import tk.mybatis.mapper.entity.Example;
 
 import java.util.List;
 
-/**
- * @author henzhang
- */
+/****
+ * @Author:henzhang
+ * @Description:Para业务层接口实现类
+ *****/
 @Service
 public class ParaServiceImpl implements ParaService {
+
     @Autowired
     private ParaMapper paraMapper;
 
-    @Autowired
-    private TemplateMapper templateMapper;
 
+    @Autowired
+    private CategoryMapper categoryMapper;
+
+    /***
+     * 根据分类ID查询参数列表
+     * @param id
+     * @return
+     */
+    @Override
+    public List<Para> findByCategoryId(Integer id) {
+        //查询分类信息
+        Category category = categoryMapper.selectByPrimaryKey(id);
+        //根据分类的模板ID查询参数列表
+        Para para = new Para();
+        para.setTemplateId(category.getTemplateId());
+        return paraMapper.select(para);
+    }
 
     /**
-     * 分页+条件搜索
+     * Para条件+分页查询
      *
-     * @param para
-     * @param page
-     * @param size
-     * @return
+     * @param para 查询条件
+     * @param page 页码
+     * @param size 页大小
+     * @return 分页结果
      */
     @Override
     public PageInfo<Para> findPage(Para para, int page, int size) {
@@ -44,7 +61,43 @@ public class ParaServiceImpl implements ParaService {
         return new PageInfo<Para>(paraMapper.selectByExample(example));
     }
 
-    private Example createExample(Para para) {
+    /**
+     * Para分页查询
+     *
+     * @param page
+     * @param size
+     * @return
+     */
+    @Override
+    public PageInfo<Para> findPage(int page, int size) {
+        //静态分页
+        PageHelper.startPage(page, size);
+        //分页查询
+        return new PageInfo<Para>(paraMapper.selectAll());
+    }
+
+    /**
+     * Para条件查询
+     *
+     * @param para
+     * @return
+     */
+    @Override
+    public List<Para> findList(Para para) {
+        //构建查询条件
+        Example example = createExample(para);
+        //根据构建的条件查询数据
+        return paraMapper.selectByExample(example);
+    }
+
+
+    /**
+     * Para构建查询对象
+     *
+     * @param para
+     * @return
+     */
+    public Example createExample(Para para) {
         Example example = new Example(Para.class);
         Example.Criteria criteria = example.createCriteria();
         if (para != null) {
@@ -73,70 +126,53 @@ public class ParaServiceImpl implements ParaService {
     }
 
     /**
-     * 分页查询
+     * 删除
      *
-     * @param page
-     * @param size
-     * @return
+     * @param id
      */
-    @Override
-    public PageInfo<Para> findPage(int page, int size) {
-        PageHelper.startPage(page, size);
-        return new PageInfo<Para>(paraMapper.selectAll());
-    }
-
-    /**
-     * 条件查询
-     *
-     * @param para
-     * @return
-     */
-    @Override
-    public List<Para> findList(Para para) {
-        Example example = createExample(para);
-        return paraMapper.selectByExample(example);
-    }
-
     @Override
     public void delete(Integer id) {
-        //根据ID查询
-        Para para = paraMapper.selectByPrimaryKey(id);
-        //修改模板统计数据
-        updateParaNum(para, -1);
         paraMapper.deleteByPrimaryKey(id);
     }
 
+    /**
+     * 修改Para
+     *
+     * @param para
+     */
     @Override
     public void update(Para para) {
         paraMapper.updateByPrimaryKey(para);
     }
 
+    /**
+     * 增加Para
+     *
+     * @param para
+     */
     @Override
     public void add(Para para) {
         paraMapper.insert(para);
-        updateParaNum(para, 1);
     }
 
+    /**
+     * 根据ID查询Para
+     *
+     * @param id
+     * @return
+     */
     @Override
     public Para findById(Integer id) {
         return paraMapper.selectByPrimaryKey(id);
     }
 
+    /**
+     * 查询Para全部数据
+     *
+     * @return
+     */
     @Override
     public List<Para> findAll() {
         return paraMapper.selectAll();
-    }
-
-    /**
-     * 修改模板统计数据
-     *
-     * @param para:操作的参数
-     * @param count:变更的数量
-     */
-    public void updateParaNum(Para para, int count) {
-        //修改模板数量统计
-        Template template = templateMapper.selectByPrimaryKey(para.getTemplateId());
-        template.setParaNum(template.getParaNum() + count);
-        templateMapper.updateByPrimaryKeySelective(template);
     }
 }

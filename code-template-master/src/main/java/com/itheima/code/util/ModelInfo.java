@@ -1,7 +1,7 @@
 package com.itheima.code.util;
 
 /****
- * @Author:shenkunlin
+ * @Author:henzhang
  * @Description:记录POJO信息
  *****/
 public class ModelInfo {

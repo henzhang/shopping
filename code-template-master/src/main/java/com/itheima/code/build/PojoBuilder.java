@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /****
- * @Author:shenkunlin
+ * @Author:henzhang
  * @Description:Pojo构建
  *****/
 public class PojoBuilder {

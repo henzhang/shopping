@@ -5,11 +5,19 @@ import com.github.pagehelper.PageInfo;
 
 import java.util.List;
 
-/**
- * @author henzhang
- */
-
+/****
+ * @Author:henzhang
+ * @Description:Spec业务层接口
+ *****/
 public interface SpecService {
+
+    /***
+     * 根据分类ID查询规格列表
+     * @param categoryid
+     * @return
+     */
+    List<Spec> findByCategoryId(Integer categoryid);
+
     /***
      * Spec多条件分页查询
      * @param spec

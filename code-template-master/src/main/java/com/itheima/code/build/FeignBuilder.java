@@ -3,7 +3,7 @@ package com.itheima.code.build;
 import java.util.Map;
 
 /****
- * @Author:shenkunlin
+ * @Author:henzhang
  * @Description:Feign构建
  *****/
 public class FeignBuilder {

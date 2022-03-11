@@ -24,6 +24,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+
 /*****
  * @Author: henzhang
  * @Description: entity
@@ -35,6 +36,15 @@ public class HttpClient {
     private String content;
     private String xmlParam;
     private boolean isHttps;
+
+    public HttpClient(String url, Map<String, String> param) {
+        this.url = url;
+        this.param = param;
+    }
+
+    public HttpClient(String url) {
+        this.url = url;
+    }
 
     public boolean isHttps() {
         return isHttps;
@@ -50,15 +60,6 @@ public class HttpClient {
 
     public void setXmlParam(String xmlParam) {
         this.xmlParam = xmlParam;
-    }
-
-    public HttpClient(String url, Map<String, String> param) {
-        this.url = url;
-        this.param = param;
-    }
-
-    public HttpClient(String url) {
-        this.url = url;
     }
 
     public void setParameter(Map<String, String> map) {
@@ -90,7 +91,7 @@ public class HttpClient {
             for (String key : param.keySet()) {
                 if (isFirst) {
                     url.append("?");
-                }else {
+                } else {
                     url.append("&");
                 }
                 url.append(key).append("=").append(param.get(key));

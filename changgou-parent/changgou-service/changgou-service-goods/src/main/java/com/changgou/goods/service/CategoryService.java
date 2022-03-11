@@ -5,10 +5,12 @@ import com.github.pagehelper.PageInfo;
 
 import java.util.List;
 
-/**
- * @author henzhang
- */
+/****
+ * @Author:henzhang
+ * @Description:Category业务层接口
+ *****/
 public interface CategoryService {
+
     /***
      * Category多条件分页查询
      * @param category
@@ -53,6 +55,7 @@ public interface CategoryService {
 
     /**
      * 根据ID查询Category
+     *
      * @param id
      * @return
      */
@@ -64,9 +67,11 @@ public interface CategoryService {
      */
     List<Category> findAll();
 
-    /***
-     * 根据父节点ID查询
-     * @param pid:父节点ID
+    /**
+     * 根据分类的父节点id查询所有子节点的集合
+     *
+     * @param pid
+     * @return
      */
     List<Category> findByParentId(Integer pid);
 }

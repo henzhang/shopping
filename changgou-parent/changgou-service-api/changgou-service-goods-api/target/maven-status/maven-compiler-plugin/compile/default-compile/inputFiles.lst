@@ -1,0 +1,16 @@
+/Users/henzhang/Downloads/shopping/shopping/changgou-parent/changgou-service-api/changgou-service-goods-api/src/main/java/com/changgou/goods/pojo/Sku.java
+/Users/henzhang/Downloads/shopping/shopping/changgou-parent/changgou-service-api/changgou-service-goods-api/src/main/java/com/changgou/goods/pojo/Spec.java
+/Users/henzhang/Downloads/shopping/shopping/changgou-parent/changgou-service-api/changgou-service-goods-api/src/main/java/com/changgou/goods/pojo/UndoLog.java
+/Users/henzhang/Downloads/shopping/shopping/changgou-parent/changgou-service-api/changgou-service-goods-api/src/main/java/com/changgou/goods/feign/SkuFeign.java
+/Users/henzhang/Downloads/shopping/shopping/changgou-parent/changgou-service-api/changgou-service-goods-api/src/main/java/com/changgou/goods/pojo/Goods.java
+/Users/henzhang/Downloads/shopping/shopping/changgou-parent/changgou-service-api/changgou-service-goods-api/src/main/java/com/changgou/goods/pojo/Brand.java
+/Users/henzhang/Downloads/shopping/shopping/changgou-parent/changgou-service-api/changgou-service-goods-api/src/main/java/com/changgou/goods/pojo/CategoryBrand.java
+/Users/henzhang/Downloads/shopping/shopping/changgou-parent/changgou-service-api/changgou-service-goods-api/src/main/java/com/changgou/goods/pojo/Spu.java
+/Users/henzhang/Downloads/shopping/shopping/changgou-parent/changgou-service-api/changgou-service-goods-api/src/main/java/com/changgou/goods/pojo/Pref.java
+/Users/henzhang/Downloads/shopping/shopping/changgou-parent/changgou-service-api/changgou-service-goods-api/src/main/java/com/changgou/goods/pojo/Album.java
+/Users/henzhang/Downloads/shopping/shopping/changgou-parent/changgou-service-api/changgou-service-goods-api/src/main/java/com/changgou/goods/pojo/Para.java
+/Users/henzhang/Downloads/shopping/shopping/changgou-parent/changgou-service-api/changgou-service-goods-api/src/main/java/com/changgou/goods/pojo/Template.java
+/Users/henzhang/Downloads/shopping/shopping/changgou-parent/changgou-service-api/changgou-service-goods-api/src/main/java/com/changgou/goods/pojo/Category.java
+/Users/henzhang/Downloads/shopping/shopping/changgou-parent/changgou-service-api/changgou-service-goods-api/src/main/java/com/changgou/goods/pojo/StockBack.java
+/Users/henzhang/Downloads/shopping/shopping/changgou-parent/changgou-service-api/changgou-service-goods-api/src/main/java/com/changgou/goods/feign/SpuFeign.java
+/Users/henzhang/Downloads/shopping/shopping/changgou-parent/changgou-service-api/changgou-service-goods-api/src/main/java/com/changgou/goods/feign/CategoryFeign.java

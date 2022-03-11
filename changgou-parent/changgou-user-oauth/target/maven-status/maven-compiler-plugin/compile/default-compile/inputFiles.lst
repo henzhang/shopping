@@ -1,0 +1,16 @@
+/Users/henzhang/Downloads/shopping/shopping/changgou-parent/changgou-user-oauth/src/main/java/com/changgou/oauth/service/AuthService.java
+/Users/henzhang/Downloads/shopping/shopping/changgou-parent/changgou-user-oauth/src/main/java/com/changgou/oauth/util/AuthToken.java
+/Users/henzhang/Downloads/shopping/shopping/changgou-parent/changgou-user-oauth/src/main/java/com/changgou/oauth/config/WebSecurityConfig.java
+/Users/henzhang/Downloads/shopping/shopping/changgou-parent/changgou-user-oauth/src/main/java/com/changgou/oauth/config/UserDetailsServiceImpl.java
+/Users/henzhang/Downloads/shopping/shopping/changgou-parent/changgou-user-oauth/src/main/java/com/changgou/oauth/service/impl/AuthServiceImpl.java
+/Users/henzhang/Downloads/shopping/shopping/changgou-parent/changgou-user-oauth/src/main/java/com/changgou/oauth/util/CookieUtil.java
+/Users/henzhang/Downloads/shopping/shopping/changgou-parent/changgou-user-oauth/src/main/java/com/changgou/oauth/util/AdminToken.java
+/Users/henzhang/Downloads/shopping/shopping/changgou-parent/changgou-user-oauth/src/main/java/com/changgou/oauth/service/LoginService.java
+/Users/henzhang/Downloads/shopping/shopping/changgou-parent/changgou-user-oauth/src/main/java/com/changgou/oauth/controller/UserLoginController.java
+/Users/henzhang/Downloads/shopping/shopping/changgou-parent/changgou-user-oauth/src/main/java/com/changgou/oauth/service/impl/LoginServiceImpl.java
+/Users/henzhang/Downloads/shopping/shopping/changgou-parent/changgou-user-oauth/src/main/java/com/changgou/oauth/config/AuthorizationServerConfig.java
+/Users/henzhang/Downloads/shopping/shopping/changgou-parent/changgou-user-oauth/src/main/java/com/changgou/OAuthApplication.java
+/Users/henzhang/Downloads/shopping/shopping/changgou-parent/changgou-user-oauth/src/main/java/com/changgou/oauth/controller/AuthController.java
+/Users/henzhang/Downloads/shopping/shopping/changgou-parent/changgou-user-oauth/src/main/java/com/changgou/oauth/config/CustomUserAuthenticationConverter.java
+/Users/henzhang/Downloads/shopping/shopping/changgou-parent/changgou-user-oauth/src/main/java/com/changgou/oauth/interceptor/TokenRequestInterceptor.java
+/Users/henzhang/Downloads/shopping/shopping/changgou-parent/changgou-user-oauth/src/main/java/com/changgou/oauth/util/UserJwt.java

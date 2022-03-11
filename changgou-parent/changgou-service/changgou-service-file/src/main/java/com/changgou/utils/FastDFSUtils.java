@@ -64,7 +64,7 @@ public class FastDFSUtils {
          * 2. 文件的扩展名
          * 3. 附加参数 比如：拍摄地址 北京 ...
          * return :
-         * 1. uploads[0] :　storage group name       group1
+         * 1.  uploads[0] :　storage group name       group1
          * 2.　uploads[１] :　storage file name      M00/02/44/XXX.jpg
          */
         String[] uploads = storageClient.upload_file(fastDFSFile.getContent(), fastDFSFile.getExt(), meta_list);
@@ -116,7 +116,7 @@ public class FastDFSUtils {
      * @return
      * @throws Exception
      */
-    public static StorageServer getStorages() throws Exception {
+    public static StorageServer getStorage() throws Exception {
         return trackerClient.getStoreStorage(trackerServer);
     }
 

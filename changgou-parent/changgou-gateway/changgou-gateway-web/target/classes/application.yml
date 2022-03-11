@@ -1,0 +1,86 @@
+spring:
+  application:
+    name: gateway-web
+  redis:
+    host: 192.168.0.2
+    port: 6379
+  cloud:
+    gateway:
+      globalcors:
+        cors-configurations:
+          '[/**]': # 匹配所有请求
+            allowedOrigins: "*" #跨域处理 允许所有的域
+            allowedMethods: # 支持的方法
+              - GET
+              - POST
+              - PUT
+              - DELETE
+      routes:
+        - id: changgou_goods_route    # 是唯一标识符
+          #uri: http://localhost:18081  # 用户请求需要路由到的微服务 (每次都会将请求给指定的URL处理)
+
+          # LoadBalancerClient 路由过滤器(客户端负载均衡) :
+          # 在以后生产环境，并发量较大的时候，我们需要根据服务的名称判断来做负载均衡操作，
+          # 可以使用LoadBalancerClientFilter来实现负载均衡调用。LoadBalancerClientFilter会作用在url以lb开头的路由,
+          # 然后利用loadBalancer来获取服务实例，构造目标requestUrl，设置到GATEWAY_REQUEST_URL_ATTR属性中，供NettyRoutingFilter使用。
+          uri: lb://goods  #所有的请求都交给goods服务处理
+
+          predicates:                  # 路由断言 路由规则配置
+            # host路由 : 所有以cloud.shopping.com的请求都路由到http://localhost:18081微服务
+            #- Host=cloud.shopping.com**
+
+            # 路径匹配过滤配置 : 所有以/brand/开始的请求，都路由到http://localhost:18081微服务
+            #- Path=/brand/**
+
+            # StripPrefix 过滤配置 :
+            # 很多时候也会有这么一种请求，用户请求路径是/api/brand,而真实路径是/brand
+            # 这时候我们需要去掉/api才是真实路径，此时可以使用SttripPrefix功能来实现路径的过滤操作
+            # - Path=/api/brand/**
+            - Path=/api/goods/**
+          filters:
+            - StripPrefix=1   # 将请求路径中的第一个路径去掉，路径以/区分，一个/代表一个路径
+
+            # PrefixPath 过滤配置 :
+            # 用户每次请求路径的时候，我们可以给真实请求加一个统一前缀
+            # 例如用户请求http://localhost:8001的时候我们让它请求真实地址http://localhost:8001/brand
+#            - Path=/**
+#          filters:
+#            - PrefixPath=/brand
+
+            - name: RequestRateLimiter #请求数限流 名字不能随便写 ，使用默认的facatory
+              args:
+                key-resolver: "#{@ipKeyResolver}"
+                # 每秒钟只允许有1个请求   是您希望允许用户每秒执行多少请求，而不会丢弃任何请求。这是令牌桶填充的速率
+                redis-rate-limiter.replenishRate: 1
+                # 允许并发有1个请求（宽限的个数）   是指令牌桶的容量，允许在一秒钟内完成的最大请求数,将此值设置为零将阻止所有请求。
+                redis-rate-limiter.burstCapacity: 1
+
+        - id: changgou_user_route # 用户微服务
+          uri: lb://user
+          predicates:
+          - Path=/api/user/**,/api/address/**,/api/areas/**,/api/cities/**,/api/provinces/**
+          filters:
+          - StripPrefix=1
+
+        - id: changgou_order_route # 订单微服务 (包含购物车)
+          uri: lb://order
+          predicates:
+            - Path=/api/cart/**,/api/categoryReport/**,/api/orderConfig/**,/api/order/**,/api/orderItem/**,/api/orderLog/**,/api/preferential/**,/api/returnCause/**,/api/returnOrder/**,/api/returnOrderItem/**
+          filters:
+            - StripPrefix=1
+
+server:
+  port: 8001
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:7001/eureka
+  instance:
+    prefer-ip-address: true
+management:
+  endpoint:
+    gateway:
+      enabled: true
+    web:
+      exposure:
+        include: true

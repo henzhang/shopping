@@ -12,7 +12,6 @@ import java.util.List;
 /****
  * @Author:shenkunlin
  * @Description:
- * @Date 2019/6/14 0:18
  *****/
 <#if swagger==true>@Api(value = "${Table}Controller")</#if>
 @RestController

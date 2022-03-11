@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<!--
+    引入Thymeleaf标签
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Thymeleaf的入门</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<!--
+    输出hello数据
+    th:text=“${变量名}” 表示使用thymeleaf获取文本数据，类似于EL表达式。
+-->
+ hello , hi ,你好 <p th:text="${message}"></p>
+
+<form id="login-form" th:action="@{/test/hello}">
+    <button>提交</button>
+</form>
+
+<table>
+    <tr>
+        <td>下标</td>
+        <td>编号</td>
+        <td>姓名</td>
+        <td>住址</td>
+    </tr>
+    <tr th:each="user,userStat:${users}">
+        <td>
+            下标:<span th:text="${userStat.index}"></span>,
+        </td>
+        <td th:text="${user.id}"></td>
+        <td th:text="${user.name}"></td>
+        <td th:text="${user.address}"></td>
+    </tr>
+</table>
+
+<div th:each="map,mapStat:${dataMap}">
+    <div th:text="${map}"></div>
+    key:<span th:text="${mapStat.current.key}"></span><br/>
+    value:<span th:text="${mapStat.current.value}"></span><br/>
+    ==============================================
+</div>
+
+<div th:each="nm,nmStat:${names}">
+    <span th:text="${nmStat.count}"></span><span th:text="${nm}"></span>
+    ==============================================
+</div>
+
+<div>
+    <span th:text="${#dates.format(now,'yyyy-MM-dd hh:ss:mm')}"></span>
+</div>
+
+<div>
+    <span th:if="${(age>=18)}">终于长大了！</span>
+</div>
+
+<div>
+    引入一个模版
+    <div>
+        <div id="A" th:include="footer::copy"></div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -12,14 +12,16 @@ import tk.mybatis.mapper.entity.Example;
 
 import java.util.List;
 
-/**
- * @author henzhang
- */
+/****
+ * @Author:henzhang
+ * @Description:Category业务层接口实现类
+ *****/
 @Service
 public class CategoryServiceImpl implements CategoryService {
 
     @Autowired
     private CategoryMapper categoryMapper;
+
 
     /**
      * Category条件+分页查询
@@ -31,10 +33,43 @@ public class CategoryServiceImpl implements CategoryService {
      */
     @Override
     public PageInfo<Category> findPage(Category category, int page, int size) {
+        //分页
         PageHelper.startPage(page, size);
+        //搜索条件构建
         Example example = createExample(category);
+        //执行搜索
         return new PageInfo<Category>(categoryMapper.selectByExample(example));
     }
+
+    /**
+     * Category分页查询
+     *
+     * @param page
+     * @param size
+     * @return
+     */
+    @Override
+    public PageInfo<Category> findPage(int page, int size) {
+        //静态分页
+        PageHelper.startPage(page, size);
+        //分页查询
+        return new PageInfo<Category>(categoryMapper.selectAll());
+    }
+
+    /**
+     * Category条件查询
+     *
+     * @param category
+     * @return
+     */
+    @Override
+    public List<Category> findList(Category category) {
+        //构建查询条件
+        Example example = createExample(category);
+        //根据构建的条件查询数据
+        return categoryMapper.selectByExample(example);
+    }
+
 
     /**
      * Category构建查询对象
@@ -42,7 +77,7 @@ public class CategoryServiceImpl implements CategoryService {
      * @param category
      * @return
      */
-    private Example createExample(Category category) {
+    public Example createExample(Category category) {
         Example example = new Example(Category.class);
         Example.Criteria criteria = example.createCriteria();
         if (category != null) {
@@ -83,57 +118,65 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     /**
-     * Category分页查询
+     * 删除
      *
-     * @param page
-     * @param size
-     * @return
+     * @param id
      */
-    @Override
-    public PageInfo<Category> findPage(int page, int size) {
-        PageHelper.startPage(page, size);
-        return new PageInfo<Category>(categoryMapper.selectAll());
-    }
-
-    /**
-     * Category条件查询
-     *
-     * @param category
-     * @return
-     */
-    @Override
-    public List<Category> findList(Category category) {
-        Example example = createExample(category);
-        return categoryMapper.selectByExample(example);
-    }
-
     @Override
     public void delete(Integer id) {
         categoryMapper.deleteByPrimaryKey(id);
     }
 
+    /**
+     * 修改Category
+     *
+     * @param category
+     */
     @Override
     public void update(Category category) {
         categoryMapper.updateByPrimaryKey(category);
     }
 
+    /**
+     * 增加Category
+     *
+     * @param category
+     */
     @Override
     public void add(Category category) {
         categoryMapper.insert(category);
     }
 
+    /**
+     * 根据ID查询Category
+     *
+     * @param id
+     * @return
+     */
     @Override
     public Category findById(Integer id) {
         return categoryMapper.selectByPrimaryKey(id);
     }
 
+    /**
+     * 查询Category全部数据
+     *
+     * @return
+     */
     @Override
     public List<Category> findAll() {
         return categoryMapper.selectAll();
     }
 
+    /**
+     * 根据父节点id查询子节点
+     *
+     * @param pid
+     * @return
+     */
     @Override
     public List<Category> findByParentId(Integer pid) {
+        // 封装一个javabean，如果此时该javabean指定属性不为null,则会将指定属性作为查询条件
         Category category = new Category();
         category.setParentId(pid);
         return categoryMapper.select(category);

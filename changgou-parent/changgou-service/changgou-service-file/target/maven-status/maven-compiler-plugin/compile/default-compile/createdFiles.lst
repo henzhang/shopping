@@ -1,0 +1,4 @@
+com/changgou/search/controller/FileUploadController.class
+com/changgou/FileApplication.class
+com/changgou/file/FastDFSFile.class
+com/changgou/utils/FastDFSUtils.class

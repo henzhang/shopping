@@ -1,15 +1,30 @@
-#过滤文件夹target,.idea
-/target
-/.idea
-/out
+/target/
+/log/
+!.mvn/wrapper/maven-wrapper.jar
+
+### STS ###
+.classpath
+.project
+.settings
+.springBeans
+.cache
+
+### IntelliJ IDEA ###
+.idea
+.idea_modules/
+*.iws
 *.iml
+*.ipr
+*.log
+*.bak
+*.swp
+*.tmp
+atlassian-ide-plugin.xml
 
-#编译文件
-*.class
+# OS generated files #
+.DS_Store*
+ehthumbs.db
+Thumbs.db
 
-#包文件
-*.jar
-*.war
-*.zip
-*.rar
-*.tar.gz
+/code-template-master
+

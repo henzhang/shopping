@@ -5,10 +5,12 @@ import com.github.pagehelper.PageInfo;
 
 import java.util.List;
 
-/**
- * @author henzhang
- */
+/****
+ * @Author:henzhang
+ * @Description:Template业务层接口
+ *****/
 public interface TemplateService {
+
     /***
      * Template多条件分页查询
      * @param template
@@ -53,6 +55,7 @@ public interface TemplateService {
 
     /**
      * 根据ID查询Template
+     *
      * @param id
      * @return
      */

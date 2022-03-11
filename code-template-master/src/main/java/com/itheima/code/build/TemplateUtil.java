@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /****
- * @Author:shenkunlin
+ * @Author:henzhang
  * @Description:创建模板，以及输出生成的文件
  *****/
 public class TemplateUtil {

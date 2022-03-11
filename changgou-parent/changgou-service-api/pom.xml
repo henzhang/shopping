@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>changgou-parent</artifactId>
@@ -16,6 +16,12 @@
     </description>
     <modules>
         <module>changgou-service-goods-api</module>
+        <module>changgou-service-content-api</module>
+        <module>changgou-service-search-api</module>
+        <module>changgou-web-item-api</module>
+        <module>changgou-service-user-api</module>
+        <module>changgou-service-order-api</module>
+        <module>changgou-service-seckill-api</module>
     </modules>
 
     <dependencies>

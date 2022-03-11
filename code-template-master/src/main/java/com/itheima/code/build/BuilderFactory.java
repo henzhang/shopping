@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /****
- * @Author:shenkunlin
+ * @Author:henzhang
  * @Description:构建对象的工厂
  *****/
 public class BuilderFactory {

@@ -1,13 +1,11 @@
 package com.changgou.goods.dao;
 
 import com.changgou.goods.pojo.Para;
-import org.springframework.stereotype.Component;
 import tk.mybatis.mapper.common.Mapper;
 
-/**
- * @author henzhang
- */
-
-@Component
+/****
+ * @Author:henzhang
+ * @Description:Para的Dao
+ *****/
 public interface ParaMapper extends Mapper<Para> {
 }

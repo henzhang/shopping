@@ -3,7 +3,7 @@ import ${package_pojo}.${Table};
 import com.github.pagehelper.PageInfo;
 import java.util.List;
 /****
- * @Author:shenkunlin
+ * @Author:henzhang
  * @Description:${Table}业务层接口
  *****/
 public interface ${Table}Service {

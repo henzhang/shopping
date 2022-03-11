@@ -11,7 +11,6 @@ import ${set};
 /****
  * @Author:shenkunlin
  * @Description:${Table}构建
- * @Date 2019/6/14 19:13
  *****/
 <#if swagger==true>
 @ApiModel(description = "${Table}",value = "${Table}")

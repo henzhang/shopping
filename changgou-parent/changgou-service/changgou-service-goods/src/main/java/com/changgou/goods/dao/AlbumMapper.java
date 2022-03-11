@@ -1,13 +1,11 @@
 package com.changgou.goods.dao;
 
 import com.changgou.goods.pojo.Album;
-import org.springframework.stereotype.Component;
 import tk.mybatis.mapper.common.Mapper;
 
-/**
- * @author henzhang
- */
-@Component
+/****
+ * @Author:henzhang
+ * @Description:Album的Dao
+ *****/
 public interface AlbumMapper extends Mapper<Album> {
-
 }
